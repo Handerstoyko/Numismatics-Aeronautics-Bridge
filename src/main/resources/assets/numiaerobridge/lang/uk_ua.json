@@ -1,0 +1,9 @@
+{
+  "numiaerobridge.ponder.docking_connector_sale_point.title": "Продаж предметів і рідин через SalePoint",
+  "numiaerobridge.ponder.docking_connector_sale_point.text_1": "Без підключеного SalePoint з'єднана пара зберігає звичайну передачу предметів і рідин.",
+  "numiaerobridge.ponder.docking_connector_sale_point.text_2": "Візьми новий предмет SalePoint і натисни Shift + ПКМ по конектору, щоб перемкнути режим продажу предметів або рідин.",
+  "numiaerobridge.ponder.docking_connector_sale_point.text_3": "Після цього натисни ПКМ по конектору з предметом SalePoint, щоб вибрати його як ціль продажу.",
+  "numiaerobridge.ponder.docking_connector_sale_point.text_4": "Поки SalePoint підключений, вхідний запас зберігається в його буфері, а не передається одразу.",
+  "numiaerobridge.ponder.docking_connector_sale_point.text_5": "Після успішної оплати придбані предмети або рідина передаються в протилежний конектор.",
+  "numiaerobridge.ponder.docking_connector_sale_point.text_6": "Після зняття SalePoint пара конекторів повертається до звичайної передачі."
+}

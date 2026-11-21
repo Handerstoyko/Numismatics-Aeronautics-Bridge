@@ -1,0 +1,9 @@
+{
+  "numiaerobridge.ponder.docking_connector_sale_point.title": "Selling items and fluids with SalePoints",
+  "numiaerobridge.ponder.docking_connector_sale_point.text_1": "Without a SalePoint bound, the connected pair keeps its normal item and fluid transfer behaviour.",
+  "numiaerobridge.ponder.docking_connector_sale_point.text_2": "Use a fresh SalePoint item and sneak-right-click the connector to switch between item and fluid sale modes.",
+  "numiaerobridge.ponder.docking_connector_sale_point.text_3": "Then right-click the connector with the SalePoint item to select it as the target.",
+  "numiaerobridge.ponder.docking_connector_sale_point.text_4": "While bound, incoming stock is held in the SalePoint buffer instead of being delivered directly.",
+  "numiaerobridge.ponder.docking_connector_sale_point.text_5": "After a successful payment, the purchased items or fluid are transferred into the opposite connector.",
+  "numiaerobridge.ponder.docking_connector_sale_point.text_6": "Removing the SalePoint releases the connector pair and restores normal transfer."
+}

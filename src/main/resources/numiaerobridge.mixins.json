@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "DockingConnectorBlockEntityMixin",
+    "DockingConnectorTankCapacityMixin",
     "DockingConnectorTankMixin",
     "SalepointBlockItemMixin",
     "SalepointBlockEntityMixin"

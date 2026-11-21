@@ -3,7 +3,7 @@ name: Build Numismatics Aeronautics Bridge
 on:
   push:
     branches:
-      - numismatics-aeronautics-compat
+      - main
   workflow_dispatch:
 
 permissions:
@@ -47,7 +47,7 @@ jobs:
           jar tf "$jar_file" | grep -q 'DockingConnectorSalePointScenes.class'
           jar tf "$jar_file" | grep -q 'DockingConnectorSalePointBehaviour.class'
           mkdir -p dist
-          cp "$jar_file" dist/Numismatics-Aeronautics-Bridge-0.2.2.jar
+          cp "$jar_file" dist/Numismatics-Aeronautics-Bridge-0.2.3.jar
           sha256sum dist/Numismatics-Aeronautics-Bridge-0.2.2.jar | tee dist/SHA256SUMS.txt
 
       - name: Upload test build
