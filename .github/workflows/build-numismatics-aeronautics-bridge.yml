@@ -79,7 +79,5 @@ jobs:
           if gh release view "$tag" >/dev/null 2>&1; then
             echo "Release $tag already exists; keeping the published release unchanged."
           else
-            gh release create "$tag" dist/*.jar dist/SHA256SUMS.txt \\
-              --title "Numismatics Aeronautics Bridge $MOD_VERSION" \\
-              --generate-notes
+            gh release create "$tag" dist/*.jar dist/SHA256SUMS.txt --title "Numismatics Aeronautics Bridge $MOD_VERSION" --generate-notes
           fi
