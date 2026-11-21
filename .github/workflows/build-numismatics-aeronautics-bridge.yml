@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build:
@@ -31,8 +31,18 @@ jobs:
       - name: Compile addon
         run: gradle --no-daemon clean build
 
+      - name: Read mod version
+        id: mod_version
+        shell: bash
+        run: |
+          version="$(sed -n 's/^version = "\([^"]*\)"/\1/p' build.gradle | head -n 1)"
+          test -n "$version"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
       - name: Verify mod jar
         shell: bash
+        env:
+          MOD_VERSION: ${{ steps.mod_version.outputs.version }}
         run: |
           set -euo pipefail
           jar_file="$(find build/libs -maxdepth 1 -type f -name '*.jar' ! -name '*-sources.jar' | head -n 1)"
@@ -48,13 +58,28 @@ jobs:
           jar tf "$jar_file" | grep -q 'DockingConnectorSalePointScenes.class'
           jar tf "$jar_file" | grep -q 'DockingConnectorSalePointBehaviour.class'
           mkdir -p dist
-          cp "$jar_file" dist/Numismatics-Aeronautics-Bridge-0.2.3.jar
-          sha256sum dist/Numismatics-Aeronautics-Bridge-0.2.3.jar | tee dist/SHA256SUMS.txt
+          cp "$jar_file" "dist/Numismatics-Aeronautics-Bridge-${MOD_VERSION}.jar"
+          sha256sum "dist/Numismatics-Aeronautics-Bridge-${MOD_VERSION}.jar" | tee dist/SHA256SUMS.txt
 
       - name: Upload test build
         uses: actions/upload-artifact@v4
         with:
-          name: Numismatics-Aeronautics-Bridge-0.2.3
+          name: Numismatics-Aeronautics-Bridge-${{ steps.mod_version.outputs.version }}
           path: dist/*
           if-no-files-found: error
           retention-days: 14
+
+      - name: Publish GitHub Release
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          MOD_VERSION: ${{ steps.mod_version.outputs.version }}
+        run: |
+          tag="v${MOD_VERSION}"
+          if gh release view "$tag" >/dev/null 2>&1; then
+            echo "Release $tag already exists; keeping the published release unchanged."
+          else
+            gh release create "$tag" dist/*.jar dist/SHA256SUMS.txt \\
+              --title "Numismatics Aeronautics Bridge $MOD_VERSION" \\
+              --generate-notes
+          fi
