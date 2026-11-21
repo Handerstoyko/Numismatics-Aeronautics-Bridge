@@ -41,6 +41,7 @@ jobs:
           jar tf "$jar_file" | grep -q 'numiaerobridge.mixins.json'
           jar tf "$jar_file" | grep -q 'DockingConnectorBlockEntityMixin.class'
           jar tf "$jar_file" | grep -q 'DockingConnectorTankMixin.class'
+          jar tf "$jar_file" | grep -q 'DockingConnectorTankCapacityMixin.class'
           jar tf "$jar_file" | grep -q 'SalepointBlockItemMixin.class'
           jar tf "$jar_file" | grep -q 'SalepointBlockEntityMixin.class'
           jar tf "$jar_file" | grep -q 'DockingConnectorSalePointPonderPlugin.class'
