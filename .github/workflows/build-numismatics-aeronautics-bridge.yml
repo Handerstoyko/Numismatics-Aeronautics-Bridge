@@ -49,12 +49,12 @@ jobs:
           jar tf "$jar_file" | grep -q 'DockingConnectorSalePointBehaviour.class'
           mkdir -p dist
           cp "$jar_file" dist/Numismatics-Aeronautics-Bridge-0.2.3.jar
-          sha256sum dist/Numismatics-Aeronautics-Bridge-0.2.2.jar | tee dist/SHA256SUMS.txt
+          sha256sum dist/Numismatics-Aeronautics-Bridge-0.2.3.jar | tee dist/SHA256SUMS.txt
 
       - name: Upload test build
         uses: actions/upload-artifact@v4
         with:
-          name: Numismatics-Aeronautics-Bridge-0.2.2
+          name: Numismatics-Aeronautics-Bridge-0.2.3
           path: dist/*
           if-no-files-found: error
           retention-days: 14
